@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, arguments ->
 
             // Si mi destino es el login entonces oculto la barra inferior. Caso contrario la muestro
-            if (destination.id == R.id.logInFragment) {
+            if (destination.id == R.id.loginFragment) {
                 bottomNavView.visibility = View.GONE
             } else {
                 bottomNavView.visibility = View.VISIBLE
 
                 // Si mi destino es la Home, tomo el userName que recibio por parametro y lo almaceno en un Object
-                if (destination.id == R.id.menu_navigation_home) {
+                if (destination.id == R.id.homeFragment) {
                     arguments?.getString("username")?.let { UserSession.userName = it }
                 }
             }

@@ -3,34 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/logInFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/menu_navigation_home"
+        android:id="@+id/loginFragment"
+        android:name="com.ort.tp3.ort.simulacroparcial.fragments.LogInFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
         android:name="com.ort.tp3.ort.simulacroparcial.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
         <action
-            android:id="@+id/action_homeFragment_to_productFragment"
-            app:destination="@id/productFragment" />
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productFragment"
-        android:name="com.ort.tp3.ort.simulacroparcial.fragments.ProductFragment"
-        android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
-    <fragment
-        android:id="@+id/menu_navigation_settings"
+        android:id="@+id/settingsFragment"
         android:name="com.ort.tp3.ort.simulacroparcial.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/logInFragment"
-        android:name="com.ort.tp3.ort.simulacroparcial.fragments.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
-        <action
-            android:id="@+id/action_logInFragment_to_menu_navigation_home"
-            app:destination="@id/menu_navigation_home" />
+        android:id="@+id/productDetailFragment"
+        android:name="com.ort.tp3.ort.simulacroparcial.fragments.ProductFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product" >
+        <argument
+            android:name="product"
+            app:argType="com.ort.tp3.ort.simulacroparcial.model.Product" />
     </fragment>
 </navigation>
